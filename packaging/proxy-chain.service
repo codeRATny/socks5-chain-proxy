@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/proxy_chain --config /etc/proxy-chain/proxy-chain.conf
+ExecStart=/usr/bin/socks5-chain-proxy --config /etc/proxy-chain/proxy-chain.conf
 Restart=on-failure
 User=proxychain
 Group=proxychain

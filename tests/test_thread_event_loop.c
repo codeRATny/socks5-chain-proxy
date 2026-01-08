@@ -1,3 +1,4 @@
+#undef NDEBUG
 #include <assert.h>
 #include <stdatomic.h>
 #include "thread_event_loop.h"

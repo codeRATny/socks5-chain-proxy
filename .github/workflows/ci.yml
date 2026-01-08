@@ -50,12 +50,12 @@ jobs:
       - name: Package zip
         run: |
           cd build-win
-          zip -r proxy_chain_windows.zip proxy_chain.exe
+          zip -r socks5-chain-proxy_windows.zip socks5-chain-proxy.exe
       - name: Upload windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: proxy-chain-windows
-          path: build-win/proxy_chain_windows.zip
+          path: build-win/socks5-chain-proxy_windows.zip
 
   release:
     needs: [build-test, build-win]
@@ -83,12 +83,12 @@ jobs:
       - name: Package Windows zip
         run: |
           cd build-win
-          zip -r proxy_chain_windows.zip proxy_chain.exe
+          zip -r socks5-chain-proxy_windows.zip socks5-chain-proxy.exe
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
             build/*.deb
-            build-win/proxy_chain_windows.zip
+            build-win/socks5-chain-proxy_windows.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

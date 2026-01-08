@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(proxy_chain LANGUAGES C)
+project(socks5-chain-proxy LANGUAGES C)
 
 if (NOT WIN32)
 enable_testing()
@@ -37,21 +37,21 @@ else()
     target_link_libraries(proxy_core PUBLIC ${LIBURING_LIBRARIES} Threads::Threads)
 endif()
 
-add_executable(proxy_chain app/main.c)
+add_executable(socks5-chain-proxy app/main.c)
 
 if (NOT WIN32)
 # Export symbols for backtrace_symbols to resolve names
-set_target_properties(proxy_chain PROPERTIES LINK_FLAGS "-rdynamic")
+set_target_properties(socks5-chain-proxy PROPERTIES LINK_FLAGS "-rdynamic")
 endif()
 
-target_include_directories(proxy_chain PRIVATE src)
-target_link_libraries(proxy_chain PRIVATE proxy_core)
+target_include_directories(socks5-chain-proxy PRIVATE src)
+target_link_libraries(socks5-chain-proxy PRIVATE proxy_core)
 
 if (NOT WIN32)
 add_subdirectory(tests)
 endif()
 
-install(TARGETS proxy_chain RUNTIME DESTINATION bin)
+install(TARGETS socks5-chain-proxy RUNTIME DESTINATION bin)
 install(FILES packaging/proxy-chain.service DESTINATION lib/systemd/system)
 install(FILES packaging/proxy-chain.conf.example DESTINATION etc/proxy-chain RENAME proxy-chain.conf)
 

@@ -1,3 +1,4 @@
+#undef NDEBUG
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,6 +12,7 @@
 #include <fcntl.h>
 #include <sys/time.h>
 #include <errno.h>
+#include <signal.h>
 
 #include "socks5_proxy.h"
 #include "thread_event_loop.h"
@@ -199,6 +201,7 @@ static void run_proxy_round(bool upstream_auth) {
 }
 
 int main(void) {
+    signal(SIGPIPE, SIG_IGN);
     alarm(10); /* safety timeout for hangs */
     run_proxy_round(false);
     run_proxy_round(true);
