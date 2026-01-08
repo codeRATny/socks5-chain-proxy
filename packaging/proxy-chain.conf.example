@@ -1,0 +1,19 @@
+# proxy-chain configuration
+listen_host=0.0.0.0
+listen_port=1080
+upstream_host=127.0.0.1
+upstream_port=2080
+require_upstream_auth=false
+upstream_user=
+upstream_pass=
+
+# Authentication (set require_auth=false to allow anonymous)
+require_auth=true
+auth_user=user
+auth_pass=pass
+
+# Logging
+log_to_stdout=true
+log_to_file=true
+log_file=/var/log/proxy-chain.log
+log_level=warning

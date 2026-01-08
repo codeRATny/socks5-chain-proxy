@@ -1,0 +1,14 @@
+[Unit]
+Description=Proxy Chain Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/proxy_chain --config /etc/proxy-chain/proxy-chain.conf
+Restart=on-failure
+User=proxychain
+Group=proxychain
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
