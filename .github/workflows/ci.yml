@@ -1,5 +1,9 @@
 name: CI
 
+# Allow release job to create GitHub Releases with the provided GITHUB_TOKEN
+permissions:
+  contents: write
+
 on:
   push:
     branches: [ main ]
